@@ -1,0 +1,350 @@
+/* ============================================
+   MARS EXODUS — Dashboard
+   ============================================ */
+
+.dashboard-page {
+  padding-top: calc(var(--nav-height) + var(--space-8));
+  min-height: 100vh;
+  padding-bottom: var(--space-16);
+}
+
+.dashboard-header {
+  margin-bottom: var(--space-10);
+}
+
+.dashboard-greeting {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.dashboard-greeting span {
+  color: var(--color-primary);
+}
+
+.dashboard-subtext {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+}
+
+/* Summary cards */
+.dash-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+.dash-summary-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+
+.dash-summary-card:hover {
+  border-color: var(--color-border-light);
+  transform: translateY(-2px);
+}
+
+.dash-summary-card .icon {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.dash-summary-card .number {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.dash-summary-card .label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Two-column layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-8);
+}
+
+/* Tickets */
+.dash-section {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+
+.dash-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ticket-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-4);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--color-success);
+}
+
+.ticket-card:hover {
+  border-color: var(--color-border-light);
+  transform: translateX(4px);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.ticket-id-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+}
+
+.ticket-status {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ticket-status.confirmed {
+  background: rgba(0,255,136,0.1);
+  color: var(--color-success);
+}
+
+.ticket-status.pending {
+  background: rgba(255,204,0,0.1);
+  color: var(--color-warning);
+}
+
+.ticket-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.ticket-detail {
+  font-size: var(--fs-xs);
+}
+
+.ticket-detail .td-label {
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ticket-detail .td-value {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.no-tickets {
+  text-align: center;
+  padding: var(--space-10);
+  color: var(--color-text-muted);
+}
+
+.no-tickets p {
+  margin-bottom: var(--space-4);
+}
+
+/* Mission status timeline */
+.mission-timeline {
+  padding: 0;
+}
+
+.mission-step {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  position: relative;
+}
+
+.mission-step::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 28px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.mission-step:last-child::before {
+  display: none;
+}
+
+.mission-step-dot {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--color-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  margin-top: 2px;
+}
+
+.mission-step.completed .mission-step-dot {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #000;
+}
+
+.mission-step.current .mission-step-dot {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #000;
+  box-shadow: 0 0 12px var(--color-primary-glow);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.mission-step-info h4 {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.mission-step-info p {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* Profile card */
+.profile-section {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 auto var(--space-4);
+  box-shadow: var(--shadow-glow);
+}
+
+.profile-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.profile-email {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.profile-member-since {
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-6);
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.profile-stat {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.profile-stat .ps-val {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.profile-stat .ps-lbl {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.logout-btn {
+  width: 100%;
+}
+
+/* Not logged in */
+.dash-login-prompt {
+  text-align: center;
+  padding: var(--space-16);
+}
+
+.dash-login-prompt h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-4);
+}
+
+.dash-login-prompt p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .dash-summary { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .dash-summary { grid-template-columns: 1fr; }
+  .ticket-details { grid-template-columns: 1fr; }
+}

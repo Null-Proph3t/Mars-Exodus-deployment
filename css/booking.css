@@ -1,0 +1,301 @@
+/* ============================================
+   MARS EXODUS — Booking System
+   ============================================ */
+
+.booking-page {
+  padding-top: calc(var(--nav-height) + var(--space-8));
+  min-height: 100vh;
+  padding-bottom: var(--space-16);
+}
+
+/* Steps indicator */
+.booking-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-12);
+  padding: 0 var(--space-4);
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--color-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-text-dim);
+  transition: all var(--transition-base);
+}
+
+.step-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  font-weight: 500;
+  transition: color var(--transition-base);
+}
+
+.step-indicator.active .step-num {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+.step-indicator.active .step-label {
+  color: var(--color-primary);
+}
+
+.step-indicator.completed .step-num {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #000;
+}
+
+.step-indicator.completed .step-label {
+  color: var(--color-success);
+}
+
+.step-line {
+  width: 40px;
+  height: 2px;
+  background: var(--color-text-dim);
+  transition: background var(--transition-base);
+}
+
+.step-line.completed {
+  background: var(--color-success);
+}
+
+/* Step panels */
+.booking-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  backdrop-filter: blur(16px);
+  animation: scaleIn 0.4s ease;
+}
+
+.step-panel {
+  display: none;
+}
+
+.step-panel.active {
+  display: block;
+  animation: fadeInUp 0.5s ease;
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.step-desc {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-8);
+}
+
+/* Travel class selector */
+.class-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.class-option {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.class-option:hover {
+  border-color: var(--color-border-light);
+}
+
+.class-option.selected {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.class-option .class-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.class-option .class-price {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.class-option .class-ship {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* Add-ons */
+.addons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.addon-item {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.addon-item:hover {
+  border-color: var(--color-border-light);
+}
+
+.addon-item.selected {
+  border-color: var(--color-primary);
+  background: rgba(0,212,255,0.03);
+}
+
+.addon-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid var(--color-text-dim);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  transition: all var(--transition-fast);
+  margin-top: 2px;
+}
+
+.addon-item.selected .addon-check {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #000;
+}
+
+.addon-info h4 {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.addon-info p {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.addon-price {
+  font-size: var(--fs-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-top: var(--space-1);
+}
+
+/* Review Summary */
+.review-section {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--fs-small);
+}
+
+.review-row:last-child {
+  border-bottom: none;
+}
+
+.review-row .label {
+  color: var(--color-text-muted);
+}
+
+.review-row .value {
+  font-weight: 600;
+}
+
+.review-total {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-4) 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  border-top: 2px solid var(--color-primary);
+  margin-top: var(--space-3);
+}
+
+.review-total .value {
+  color: var(--color-primary);
+}
+
+/* Navigation buttons */
+.booking-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-8);
+}
+
+.booking-nav .btn {
+  min-width: 140px;
+}
+
+/* Date picker style */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .class-selector { grid-template-columns: 1fr; }
+  .addons-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .booking-steps { flex-wrap: wrap; }
+  .step-label { display: none; }
+  .booking-card { padding: var(--space-6); }
+}

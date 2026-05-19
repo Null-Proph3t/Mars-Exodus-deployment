@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experience the cinematic journey from Earth to Mars — scroll-driven immersive storytelling by Mars Exodus.">
+  <title>The Journey — Mars Exodus</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/journey.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="journey-page">
+  <div id="nav-slot"></div>
+
+  <!-- Progress Bar -->
+  <div class="journey-progress">
+    <div class="journey-progress-bar" id="journey-progress-bar"></div>
+  </div>
+  <div class="journey-phase-label" id="journey-phase-label">Earth</div>
+
+  <div class="journey-container" id="journey-container">
+    <canvas id="three-canvas" class="three-canvas"></canvas>
+
+    <!-- Scene 1: Earth -->
+    <section class="journey-scene scene-earth" data-phase="Earth — Point of Departure">
+      <div class="earth-atmosphere"></div>
+      <div class="earth-city-skyline" id="city-skyline"></div>
+      <h1 class="earth-title">EARTH</h1>
+      <div class="earth-date">Launch Day — June 15, 2026</div>
+      <p class="earth-desc">You stand at the spaceport, heart pounding. Behind you, everything you've ever known. Ahead — the infinite unknown. This is the moment that changes everything.</p>
+    </section>
+
+    <!-- Scene 2: Launch Prep -->
+    <section class="journey-scene scene-prep" data-phase="Launch Preparation">
+      <div class="prep-content">
+        <h2 class="prep-title">SYSTEMS CHECK</h2>
+        <p style="color: var(--color-text-secondary);">Final preparations before humanity's greatest leap. Every system verified. Every passenger secured.</p>
+        <div class="prep-checklist" id="prep-checklist">
+          <div class="prep-item" data-delay="0">
+            <div class="check" style="font-family: monospace;">OK</div>
+            <div class="prep-text"><strong>Life Support</strong>O₂ generation & CO₂ scrubbing nominal</div>
+          </div>
+          <div class="prep-item" data-delay="200">
+            <div class="check" style="font-family: monospace;">OK</div>
+            <div class="prep-text"><strong>Navigation Array</strong>Trajectory locked — Hohmann transfer orbit</div>
+          </div>
+          <div class="prep-item" data-delay="400">
+            <div class="check" style="font-family: monospace;">OK</div>
+            <div class="prep-text"><strong>Radiation Shields</strong>Triple-layer magnetic deflection active</div>
+          </div>
+          <div class="prep-item" data-delay="600">
+            <div class="check" style="font-family: monospace;">OK</div>
+            <div class="prep-text"><strong>Propulsion</strong>Plasma ion drives charged to 100%</div>
+          </div>
+          <div class="prep-item" data-delay="800">
+            <div class="check" style="font-family: monospace;">OK</div>
+            <div class="prep-text"><strong>Passenger Pods</strong>All cabins sealed and pressurized</div>
+          </div>
+          <div class="prep-item" data-delay="1000">
+            <div class="check" style="font-family: monospace;">OK</div>
+            <div class="prep-text"><strong>Mission Control</strong>Green light from Houston & Olympus Base</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 3: Launch -->
+    <section class="journey-scene scene-launch" data-phase="Ignition & Liftoff">
+      <div class="launch-countdown" id="launch-countdown">T-10</div>
+      <div class="launch-pad">
+        <div class="launch-smoke" id="launch-smoke"></div>
+        <!-- 3D Rocket replaces CSS rocket -->
+      </div>
+    </section>
+
+    <!-- Scene 4: Atmosphere Exit -->
+    <section class="journey-scene scene-atmosphere" data-phase="Leaving the Atmosphere">
+      <div class="atmosphere-layers">
+        <div class="atm-layer atm-layer-1"></div>
+        <div class="atm-layer atm-layer-2"></div>
+        <div class="atm-layer atm-layer-3"></div>
+      </div>
+      <div class="atm-text">
+        <h2>Breaking Through <span>the Atmosphere</span></h2>
+        <p>The sky transitions from blue to black. Gravity loosens its grip. For the first time, you see the curvature of Earth — and you understand just how far you're going.</p>
+      </div>
+    </section>
+
+    <!-- Scene 5: Deep Space -->
+    <section class="journey-scene scene-space" data-phase="Deep Space Transit">
+      <div class="space-stars-layer" id="space-stars"></div>
+      <div class="parallax-nebula nebula-1"></div>
+      <div class="parallax-nebula nebula-2"></div>
+      <div class="parallax-nebula nebula-3"></div>
+      <!-- Floating elements removed -->
+      <div class="space-text-blocks">
+        <div class="space-text" data-reveal>
+          <h2>4.5 Months in the Void</h2>
+          <p>The silence of space is deafening and beautiful. You float between worlds, watching stars that haven't moved in billions of years. Time stretches. Perspective shifts.</p>
+        </div>
+        <div class="space-text" data-reveal>
+          <h2>Life Aboard the Vessel</h2>
+          <p>Zero-G lounges, observation decks, and communal dining halls keep morale high. The onboard AI, ARIA, narrates constellations visible through the panoramic viewports.</p>
+        </div>
+        <div class="space-text" data-reveal>
+          <h2>Halfway Point</h2>
+          <p>You're now further from Earth than any human in history. The pale blue dot is barely a pixel on the rear monitor. Ahead, a rust-colored star grows brighter each day.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 6: Mars Approach -->
+    <section class="journey-scene scene-mars-approach" data-phase="Mars Approach">
+      <div class="approach-text">
+        <h2>MARS</h2>
+        <p>After 137 days, the red planet fills your viewport. Olympus Mons rises above the thin atmosphere. You can see the colony lights flickering on the surface. This is real.</p>
+      </div>
+    </section>
+
+    <!-- Scene 7: Colony -->
+    <section class="journey-scene scene-colony" data-phase="Welcome to Mars Colony">
+      <div class="colony-skyline">
+        <div class="mars-ground"></div>
+        <div class="dome dome-1">
+          <div class="dome-light" style="left:30%;"></div>
+          <div class="dome-light" style="left:60%;"></div>
+        </div>
+        <div class="dome dome-2">
+          <div class="dome-light" style="left:25%;"></div>
+          <div class="dome-light" style="left:50%;"></div>
+          <div class="dome-light" style="left:75%;"></div>
+        </div>
+        <div class="dome dome-3">
+          <div class="dome-light" style="left:40%;"></div>
+        </div>
+      </div>
+      <div class="colony-content">
+        <h2>Welcome to <span>Olympus Colony</span></h2>
+        <p>You've arrived. The airlock hisses open. Red dust, thin air, the warm glow of biodomes on the horizon. This is home now. A new chapter — not just for you, but for humanity.</p>
+        <div class="colony-stats-row">
+          <div class="colony-stat">
+            <div class="num">2,847</div>
+            <div class="lbl">Residents</div>
+          </div>
+          <div class="colony-stat">
+            <div class="num">12</div>
+            <div class="lbl">Biodomes</div>
+          </div>
+          <div class="colony-stat">
+            <div class="num">94%</div>
+            <div class="lbl">Self-Sufficient</div>
+          </div>
+        </div>
+      </div>
+      <div class="colony-cta">
+        <a href="booking.html" class="btn btn-accent btn-lg">Begin Your Story →</a>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="footer-slot"></div>
+
+  <script src="js/global.js"></script>
+  <script type="module" src="js/journey.js"></script>
+</body>
+</html>

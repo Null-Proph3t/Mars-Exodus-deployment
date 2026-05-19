@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your seat on the next Mars Exodus mission. Choose your travel class, add-ons, and reserve your place in history.">
+  <title>Book Your Seat — Mars Exodus</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+  <div class="stars-bg" aria-hidden="true"></div>
+  <div id="nav-slot"></div>
+
+  <div class="booking-page">
+    <div class="container">
+
+      <!-- Steps -->
+      <div class="booking-steps" id="booking-steps">
+        <div class="step-indicator active" data-step="1">
+          <div class="step-num">1</div>
+          <span class="step-label">Passenger</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-indicator" data-step="2">
+          <div class="step-num">2</div>
+          <span class="step-label">Travel Class</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-indicator" data-step="3">
+          <div class="step-num">3</div>
+          <span class="step-label">Add-ons</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-indicator" data-step="4">
+          <div class="step-num">4</div>
+          <span class="step-label">Review</span>
+        </div>
+      </div>
+
+      <div class="booking-card">
+
+        <!-- Step 1: Passenger Details -->
+        <div class="step-panel active" id="step-1">
+          <h2 class="step-title">Passenger Details</h2>
+          <p class="step-desc">All travelers must provide accurate identification details for launch clearance.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="b-name">Full Name</label>
+              <input type="text" class="form-input" id="b-name" placeholder="Dr. Jane Cooper" required>
+              <div class="form-error" id="b-name-error">Name is required</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-email">Email</label>
+              <input type="email" class="form-input" id="b-email" placeholder="jane@example.com" required>
+              <div class="form-error" id="b-email-error">Valid email required</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="b-phone">Phone Number</label>
+              <input type="tel" class="form-input" id="b-phone" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-dob">Date of Birth</label>
+              <input type="date" class="form-input" id="b-dob" required>
+              <div class="form-error" id="b-dob-error">Date of birth is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="b-nationality">Nationality</label>
+            <select class="form-input" id="b-nationality">
+              <option value="">Select country</option>
+              <option value="US">United States</option>
+              <option value="UK">United Kingdom</option>
+              <option value="IN">India</option>
+              <option value="CN">China</option>
+              <option value="JP">Japan</option>
+              <option value="DE">Germany</option>
+              <option value="FR">France</option>
+              <option value="AU">Australia</option>
+              <option value="CA">Canada</option>
+              <option value="BR">Brazil</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="b-medical">Medical Conditions (if any)</label>
+            <textarea class="form-input" id="b-medical" rows="3" placeholder="List any medical conditions or allergies..."></textarea>
+          </div>
+
+          <div class="booking-nav">
+            <span></span>
+            <button class="btn btn-primary" id="next-1">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Travel Class -->
+        <div class="step-panel" id="step-2">
+          <h2 class="step-title">Select Travel Class</h2>
+          <p class="step-desc">Choose the experience that matches your journey aspirations.</p>
+
+          <div class="class-selector" id="class-selector">
+            <div class="class-option" data-class="economy" data-price="250000">
+              <div class="class-name">Economy</div>
+              <div class="class-price">$250,000</div>
+              <div class="class-ship">Pathfinder Class</div>
+            </div>
+            <div class="class-option" data-class="business" data-price="750000">
+              <div class="class-name">Business</div>
+              <div class="class-price">$750,000</div>
+              <div class="class-ship">Voyager Class</div>
+            </div>
+            <div class="class-option" data-class="elite" data-price="2500000">
+              <div class="class-name">Elite</div>
+              <div class="class-price">$2,500,000</div>
+              <div class="class-ship">Sovereign Class</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="b-mission">Preferred Mission</label>
+            <select class="form-input" id="b-mission">
+              <option value="MX-048">Mission MX-048 — June 15, 2026</option>
+              <option value="MX-049">Mission MX-049 — August 22, 2026</option>
+              <option value="MX-050">Mission MX-050 — November 3, 2026</option>
+            </select>
+          </div>
+
+          <div class="booking-nav">
+            <button class="btn btn-outline" id="back-2">← Back</button>
+            <button class="btn btn-primary" id="next-2">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Add-ons -->
+        <div class="step-panel" id="step-3">
+          <h2 class="step-title">Customize Your Journey</h2>
+          <p class="step-desc">Enhance your Mars experience with optional add-ons.</p>
+
+          <div class="addons-grid" id="addons-grid">
+            <div class="addon-item" data-addon="cargo" data-price="15000">
+              <div class="addon-check">✓</div>
+              <div class="addon-info">
+                <h4>Extra Cargo (100kg)</h4>
+                <p>Additional cargo allowance for personal items and equipment.</p>
+                <div class="addon-price">+ $15,000</div>
+              </div>
+            </div>
+
+            <div class="addon-item" data-addon="research" data-price="45000">
+              <div class="addon-check">✓</div>
+              <div class="addon-info">
+                <h4>Research Access</h4>
+                <p>Full access to onboard labs and colony research facilities.</p>
+                <div class="addon-price">+ $45,000</div>
+              </div>
+            </div>
+
+            <div class="addon-item" data-addon="extended" data-price="85000">
+              <div class="addon-check">✓</div>
+              <div class="addon-info">
+                <h4>Extended Stay (2 Years)</h4>
+                <p>Stay on Mars for a full 2-year cycle instead of the standard 6 months.</p>
+                <div class="addon-price">+ $85,000</div>
+              </div>
+            </div>
+
+            <div class="addon-item" data-addon="insurance" data-price="25000">
+              <div class="addon-check">✓</div>
+              <div class="addon-info">
+                <h4>Premium Insurance</h4>
+                <p>Comprehensive coverage including emergency return-to-Earth evacuation.</p>
+                <div class="addon-price">+ $25,000</div>
+              </div>
+            </div>
+
+            <div class="addon-item" data-addon="training" data-price="35000">
+              <div class="addon-check">✓</div>
+              <div class="addon-info">
+                <h4>Pre-Flight Training</h4>
+                <p>2-week intensive space readiness program with zero-G simulation.</p>
+                <div class="addon-price">+ $35,000</div>
+              </div>
+            </div>
+
+            <div class="addon-item" data-addon="vip" data-price="50000">
+              <div class="addon-check">✓</div>
+              <div class="addon-info">
+                <h4>VIP Spaceport Lounge</h4>
+                <p>Priority boarding, private lounge access, and personal concierge service.</p>
+                <div class="addon-price">+ $50,000</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-nav">
+            <button class="btn btn-outline" id="back-3">← Back</button>
+            <button class="btn btn-primary" id="next-3">Review Booking →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Review -->
+        <div class="step-panel" id="step-4">
+          <h2 class="step-title">Review Your Booking</h2>
+          <p class="step-desc">Please verify all details before proceeding to payment.</p>
+
+          <div class="review-section" id="review-summary">
+            <!-- Filled by JS -->
+          </div>
+
+          <div class="booking-nav">
+            <button class="btn btn-outline" id="back-4">← Back</button>
+            <a href="payment.html" class="btn btn-accent btn-lg" id="proceed-payment">Proceed to Payment →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-slot"></div>
+
+  <script src="js/global.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>

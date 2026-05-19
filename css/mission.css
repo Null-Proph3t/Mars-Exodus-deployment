@@ -1,0 +1,240 @@
+/* ============================================
+   MARS EXODUS — Mission & Experience Page
+   ============================================ */
+
+.mission-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: var(--nav-height);
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center bottom, rgba(255,107,53,0.1), transparent 60%);
+}
+
+.mission-hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 900;
+  margin-bottom: var(--space-4);
+}
+
+.mission-hero h1 span {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Timeline */
+.timeline-section {
+  padding: var(--space-24) 0;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-8) 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: var(--space-6);
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: var(--space-12);
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: var(--space-12);
+}
+
+.timeline-dot {
+  position: absolute;
+  top: var(--space-8);
+  width: 16px;
+  height: 16px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--color-primary-glow);
+  z-index: 2;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+  right: -8px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -8px;
+}
+
+.timeline-content {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(12px);
+}
+
+.timeline-content:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+.timeline-phase {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.timeline-content h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-3);
+}
+
+.timeline-content p {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+
+.timeline-duration {
+  margin-top: var(--space-3);
+  font-size: var(--fs-xs);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Experience Grid */
+.experience-section {
+  background: var(--color-bg-deep);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-24) 0;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.experience-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-border-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.experience-card:hover::before {
+  opacity: 1;
+}
+
+.experience-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.experience-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-3);
+}
+
+.experience-card p {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+
+/* Mission stats bar */
+.mission-stats-bar {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-12) 0;
+}
+
+.mission-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-6);
+  text-align: center;
+}
+
+.mission-stat-item .value {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.mission-stat-item .label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .timeline::before { left: 20px; }
+  .timeline-item { width: 100%; left: 0 !important; padding-left: 50px !important; padding-right: 0 !important; text-align: left !important; }
+  .timeline-dot { left: 12px !important; right: auto !important; }
+  .experience-grid { grid-template-columns: 1fr; }
+  .mission-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}

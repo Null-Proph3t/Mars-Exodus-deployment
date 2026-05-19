@@ -1,0 +1,397 @@
+/* ============================================
+   MARS EXODUS — Fleet & Technology Page
+   ============================================ */
+
+.fleet-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: var(--nav-height);
+  position: relative;
+}
+
+.fleet-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08), transparent 60%);
+}
+
+.fleet-hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 900;
+  margin-bottom: var(--space-4);
+}
+
+.fleet-hero h1 span {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ship cards */
+.fleet-section {
+  padding: var(--space-24) 0;
+}
+
+.fleet-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.fleet-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+  cursor: pointer;
+}
+
+.fleet-card:hover {
+  border-color: var(--color-border-light);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.fleet-card.selected {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.fleet-card-visual {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fleet-card-visual.economy-bg {
+  background: linear-gradient(135deg, #1a2030 0%, #0d1520 100%);
+}
+
+.fleet-card-visual.business-bg {
+  background: linear-gradient(135deg, #1a1530 0%, #0d0d20 100%);
+}
+
+.fleet-card-visual.elite-bg {
+  background: linear-gradient(135deg, #251a10 0%, #1a0d05 100%);
+}
+
+.ship-silhouette {
+  width: 200px;
+  height: 80px;
+  position: relative;
+}
+
+.ship-body {
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(90deg, transparent, #3a4050 10%, #5a6070 50%, #3a4050 90%, transparent);
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ship-cockpit {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 20px;
+  background: linear-gradient(90deg, #5a6070, #7a8090);
+  border-radius: 0 50% 50% 0;
+}
+
+.ship-cockpit::before {
+  content: '';
+  position: absolute;
+  right: 2px;
+  top: 4px;
+  width: 8px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 0 4px 4px 0;
+  opacity: 0.6;
+  box-shadow: 0 0 8px var(--color-primary-glow);
+}
+
+.ship-wing-top, .ship-wing-bottom {
+  position: absolute;
+  left: 30%;
+  width: 50px;
+  height: 3px;
+  background: #4a5060;
+}
+
+.ship-wing-top {
+  top: 10px;
+  transform: rotate(-15deg);
+  transform-origin: right center;
+}
+
+.ship-wing-bottom {
+  bottom: 10px;
+  transform: rotate(15deg);
+  transform-origin: right center;
+}
+
+.ship-engine {
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 18px;
+  background: #3a4050;
+  border-radius: 4px 0 0 4px;
+}
+
+.ship-engine::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 8px;
+  border-radius: 4px 0 0 4px;
+}
+
+.economy-bg .ship-engine::after {
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4));
+}
+
+.business-bg .ship-engine::after {
+  background: linear-gradient(90deg, transparent, rgba(100,50,255,0.4));
+}
+
+.elite-bg .ship-engine::after {
+  background: linear-gradient(90deg, transparent, rgba(255,107,53,0.4));
+}
+
+.fleet-card-tier {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tier-economy {
+  color: var(--color-primary);
+  background: rgba(0,212,255,0.1);
+}
+
+.tier-business {
+  color: #8b5cf6;
+  background: rgba(139,92,246,0.1);
+}
+
+.tier-elite {
+  color: var(--color-accent);
+  background: rgba(255,107,53,0.1);
+}
+
+.fleet-card-body {
+  padding: var(--space-6);
+}
+
+.fleet-card-body h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-2);
+}
+
+.fleet-card-subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-5);
+}
+
+.fleet-card-price {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  margin-bottom: var(--space-5);
+}
+
+.fleet-card-price .from {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.fleet-card-features {
+  margin-bottom: var(--space-6);
+}
+
+.fleet-card-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fleet-card-features li:last-child {
+  border-bottom: none;
+}
+
+.fleet-card-features .feat-icon {
+  color: var(--color-success);
+  font-size: 0.9rem;
+}
+
+.fleet-card-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.fleet-card-actions .btn {
+  flex: 1;
+}
+
+/* Comparison Table */
+.comparison-section {
+  background: var(--color-bg-deep);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-24) 0;
+}
+
+.comparison-table-wrapper {
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: var(--space-4) var(--space-5);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--fs-small);
+}
+
+.comparison-table th {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-bg-secondary);
+}
+
+.comparison-table th:first-child {
+  text-align: left;
+}
+
+.comparison-table td:first-child {
+  text-align: left;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.comparison-table td {
+  color: var(--color-text-secondary);
+}
+
+.comparison-table .check-yes {
+  color: var(--color-success);
+}
+
+.comparison-table .check-no {
+  color: var(--color-text-dim);
+}
+
+.comparison-table tr:hover td {
+  background: rgba(0,212,255,0.02);
+}
+
+.comparison-table thead th:nth-child(2) { color: var(--color-primary); }
+.comparison-table thead th:nth-child(3) { color: #8b5cf6; }
+.comparison-table thead th:nth-child(4) { color: var(--color-accent); }
+
+/* Tech specs */
+.tech-section {
+  padding: var(--space-24) 0;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.tech-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  gap: var(--space-4);
+  transition: all var(--transition-base);
+}
+
+.tech-card:hover {
+  border-color: var(--color-border-light);
+  transform: translateX(4px);
+}
+
+.tech-card-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.tech-card h4 {
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.tech-card p {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .fleet-cards { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+}
+
+@media (max-width: 768px) {
+  .tech-grid { grid-template-columns: 1fr; }
+}

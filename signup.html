@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create your Mars Exodus account to reserve your seat to Mars.">
+  <title>Sign Up — Mars Exodus</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <div class="stars-bg" aria-hidden="true"></div>
+  <div id="nav-slot"></div>
+
+  <div class="auth-page">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <div class="logo-text">MARS <span>EXODUS</span></div>
+          <p>Create your explorer account</p>
+        </div>
+        <form class="auth-form" id="signup-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="signup-name">Full Name</label>
+            <input type="text" class="form-input" id="signup-name" placeholder="Dr. Jane Cooper" autocomplete="name" required>
+            <div class="form-error" id="name-error">Please enter your full name</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="signup-email">Email Address</label>
+            <input type="email" class="form-input" id="signup-email" placeholder="jane@example.com" autocomplete="email" required>
+            <div class="form-error" id="email-error">Please enter a valid email address</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="signup-password">Password</label>
+            <input type="password" class="form-input" id="signup-password" placeholder="Create a strong password" autocomplete="new-password" required>
+            <div class="password-strength" id="password-strength">
+              <div class="strength-bar" id="str-1"></div>
+              <div class="strength-bar" id="str-2"></div>
+              <div class="strength-bar" id="str-3"></div>
+              <div class="strength-bar" id="str-4"></div>
+            </div>
+            <div class="strength-text" id="strength-text"></div>
+            <ul class="password-rules" id="password-rules">
+              <li id="rule-length"><span class="rule-icon" style="font-family: monospace;">[-]</span> At least 8 characters</li>
+              <li id="rule-upper"><span class="rule-icon" style="font-family: monospace;">[-]</span> One uppercase letter</li>
+              <li id="rule-lower"><span class="rule-icon" style="font-family: monospace;">[-]</span> One lowercase letter</li>
+              <li id="rule-number"><span class="rule-icon" style="font-family: monospace;">[-]</span> One number</li>
+              <li id="rule-special"><span class="rule-icon" style="font-family: monospace;">[-]</span> One special character</li>
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="signup-confirm">Confirm Password</label>
+            <input type="password" class="form-input" id="signup-confirm" placeholder="Repeat password" autocomplete="new-password" required>
+            <div class="form-error" id="confirm-error">Passwords do not match</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg auth-submit" id="signup-btn">Create Account</button>
+        </form>
+
+        <div class="auth-footer">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

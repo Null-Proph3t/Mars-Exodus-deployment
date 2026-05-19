@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mars Exodus Intelligence — View daily cosmic feeds, Mars surface intelligence, and space hazard monitoring.">
+  <title>Intelligence — Mars Exodus</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/intelligence.css">
+</head>
+<body>
+  <div class="stars-bg" aria-hidden="true"></div>
+  <div id="nav-slot"></div>
+
+  <main class="intelligence-page" id="intelligence-main">
+    
+    <!-- Hero / Header -->
+    <header class="intel-header reveal">
+      <div class="container">
+        <h1>Cosmic <span class="text-neon">Intelligence</span></h1>
+        <p class="subtitle">Live data streams from deep space architecture.</p>
+      </div>
+    </header>
+
+    <!-- APOD Section -->
+    <section class="intel-section apod-section" id="section-apod">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Daily Cosmic Feed</h2>
+          <div class="line-decorator"></div>
+        </div>
+        <div id="apod-container" class="glass-panel reveal stagger">
+          <!-- Skeleton Loading -->
+          <div class="skeleton-ui skeleton-apod"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NeoWs Section -->
+    <section class="intel-section neows-section" id="section-neows">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Space Hazard Monitoring</h2>
+          <div class="line-decorator"></div>
+        </div>
+        <div class="neows-dashboard">
+          <div class="neows-status reveal">
+            <h3>Near Earth Object Scan</h3>
+            <p>Monitoring orbital trajectories for potential hazards...</p>
+          </div>
+          <div id="neows-grid" class="neows-grid reveal stagger">
+            <!-- Populated by JS -->
+            <div class="skeleton-ui skeleton-neo"></div>
+            <div class="skeleton-ui skeleton-neo"></div>
+            <div class="skeleton-ui skeleton-neo"></div>
+            <div class="skeleton-ui skeleton-neo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-slot"></div>
+
+  <script src="js/global.js"></script>
+  <script type="module" src="js/intelligence/main.js"></script>
+</body>
+</html>

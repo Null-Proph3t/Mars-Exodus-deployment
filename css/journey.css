@@ -1,0 +1,666 @@
+/* ============================================
+   MARS EXODUS — Cinematic Journey Page
+   ============================================ */
+
+.journey-page {
+  --journey-progress: 0;
+}
+
+/* Progress bar */
+.journey-progress {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-bg-tertiary);
+  z-index: var(--z-above);
+}
+
+.journey-progress-bar {
+  height: 100%;
+  background: var(--gradient-primary);
+  width: 0%;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+/* Phase labels */
+.journey-phase-label {
+  position: fixed;
+  top: calc(var(--nav-height) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-above);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(5,5,8,0.85);
+  backdrop-filter: blur(12px);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0,212,255,0.15);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.journey-phase-label.visible {
+  opacity: 1;
+}
+
+/* Scene container */
+.journey-container {
+  position: relative;
+  z-index: 5;
+}
+
+.journey-scene {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 2; /* Explicitly above canvas */
+}
+
+/* 3D Canvas Background */
+.three-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Send it back behind all content */
+  pointer-events: none;
+}
+
+
+/* ---- Scene 1: Earth ---- */
+.scene-earth {
+  background: transparent; /* Show 3D scene background */
+  flex-direction: column;
+  text-align: center;
+  padding: var(--space-20) var(--space-6);
+}
+
+.earth-atmosphere {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(0deg, rgba(74,155,189,0.2), transparent);
+}
+
+.earth-city-skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 10%;
+}
+
+.building {
+  background: linear-gradient(180deg, #1a2a3a, #0d1520);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  min-width: 12px;
+}
+
+.building::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,200,100,0.3) 0px,
+    rgba(255,200,100,0.3) 3px,
+    transparent 3px,
+    transparent 8px
+  );
+  border-radius: 2px;
+}
+
+.earth-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 900;
+  color: #fff;
+  z-index: 2;
+  margin-bottom: var(--space-4);
+}
+
+.earth-date {
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  color: var(--color-primary);
+  letter-spacing: 4px;
+  z-index: 2;
+  margin-bottom: var(--space-8);
+}
+
+.earth-desc {
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  z-index: 2;
+  line-height: 1.8;
+}
+
+/* ---- Scene 2: Launch Prep ---- */
+.scene-prep {
+  background: transparent;
+  flex-direction: column;
+}
+
+.prep-content {
+  max-width: 800px;
+  text-align: center;
+  padding: var(--space-6);
+  z-index: 2;
+}
+
+.prep-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: var(--space-6);
+}
+
+.prep-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  text-align: left;
+}
+
+.prep-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.prep-item.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.prep-item .check {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--color-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-xs);
+  transition: all var(--transition-base);
+}
+
+.prep-item.checked .check {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #000;
+}
+
+.prep-item .prep-text {
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+.prep-item .prep-text strong {
+  display: block;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+/* ---- Scene 3: Launch ---- */
+.scene-launch {
+  background: linear-gradient(180deg, #0a0c10 0%, transparent 100%);
+  min-height: 150vh;
+}
+
+.launch-pad {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rocket {
+  width: 30px;
+  position: relative;
+  transition: transform 0.1s linear;
+  z-index: 3;
+}
+
+.rocket-body {
+  width: 30px;
+  height: 100px;
+  background: linear-gradient(180deg, #d0d5dd 0%, #a0a8b8 50%, #808898 100%);
+  border-radius: 50% 50% 5px 5px;
+  position: relative;
+}
+
+.rocket-body::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+.rocket-fin-left, .rocket-fin-right {
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 25px;
+  background: linear-gradient(180deg, #808898, #606878);
+}
+
+.rocket-fin-left {
+  left: -10px;
+  border-radius: 0 0 0 8px;
+  transform: skewX(15deg);
+}
+
+.rocket-fin-right {
+  right: -10px;
+  border-radius: 0 0 8px 0;
+  transform: skewX(-15deg);
+}
+
+.rocket-flame {
+  width: 20px;
+  margin: 0 auto;
+  height: 0;
+  background: linear-gradient(180deg, #ff6b35, #ff4444, #ffcc00);
+  border-radius: 0 0 50% 50%;
+  transition: height 0.3s ease;
+  filter: blur(2px);
+  position: relative;
+}
+
+.rocket-flame.active {
+  height: 80px;
+  animation: flamePulse 0.1s ease-in-out infinite alternate;
+}
+
+@keyframes flamePulse {
+  from { height: 70px; opacity: 0.9; }
+  to   { height: 90px; opacity: 1; }
+}
+
+.launch-smoke {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(0deg, rgba(180,180,190,0.4) 0%, transparent 100%);
+  transition: height 1s ease;
+  border-radius: 50%;
+  filter: blur(30px);
+}
+
+.launch-smoke.active {
+  height: 200px;
+}
+
+/* Countdown Display */
+.launch-countdown {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  color: var(--color-accent);
+  z-index: 5;
+  text-shadow: 0 0 40px var(--color-accent-glow);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.launch-countdown.visible {
+  opacity: 1;
+}
+
+/* ---- Scene 4: Atmosphere Exit ---- */
+.scene-atmosphere {
+  background: transparent;
+  flex-direction: column;
+  text-align: center;
+}
+
+.atmosphere-layers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.atm-layer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  opacity: 0.3;
+}
+
+.atm-layer-1 {
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(74,155,189,0.15), transparent);
+}
+
+.atm-layer-2 {
+  bottom: 20%;
+  background: linear-gradient(0deg, rgba(50,100,150,0.1), transparent);
+}
+
+.atm-layer-3 {
+  bottom: 40%;
+  background: linear-gradient(0deg, rgba(30,50,100,0.05), transparent);
+}
+
+.atm-text {
+  z-index: 2;
+}
+
+.atm-text h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+}
+
+.atm-text h2 span {
+  color: var(--color-primary);
+}
+
+.atm-text p {
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ---- Scene 5: Deep Space ---- */
+.scene-space {
+  background: transparent;
+  min-height: 200vh;
+  position: relative;
+}
+
+.space-stars-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.space-star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.parallax-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.nebula-1 {
+  width: 400px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(100,50,200,0.4), transparent);
+  top: 20%;
+  left: 10%;
+}
+
+.nebula-2 {
+  width: 350px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(0,150,255,0.3), transparent);
+  top: 50%;
+  right: 15%;
+}
+
+.nebula-3 {
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,50,100,0.2), transparent);
+  bottom: 20%;
+  left: 30%;
+}
+
+.space-text-blocks {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-32) var(--space-6);
+  gap: 60vh;
+}
+
+.space-text {
+  text-align: center;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.space-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.space-text h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.space-text p {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.floating-element {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+  font-size: 2rem;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+/* ---- Scene 6: Mars Approach ---- */
+.scene-mars-approach {
+  background: transparent;
+  flex-direction: column;
+  text-align: center;
+}
+
+.mars-approaching {
+  width: clamp(200px, 40vw, 400px);
+  height: clamp(200px, 40vw, 400px);
+  border-radius: 50%;
+  background: url('../assets/mars_texture.jpg') center / 200% auto no-repeat;
+  box-shadow:
+    inset -40px -40px 80px rgba(0,0,0,0.85),
+    inset 20px 20px 60px rgba(255,255,255,0.1),
+    0 0 100px rgba(192,82,46,0.5),
+    0 0 200px rgba(192,82,46,0.2);
+  margin-bottom: var(--space-10);
+  position: relative;
+  animation: float 8s ease-in-out infinite;
+}
+
+.mars-approaching::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(255,150,100,0.12), transparent 40%),
+    radial-gradient(ellipse at 70% 30%, rgba(200,100,50,0.08), transparent 30%);
+}
+
+.approach-text h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.approach-text p {
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ---- Scene 7: Mars Colony ---- */
+.scene-colony {
+  background: linear-gradient(180deg, #1a0a05 0%, #2d150b 30%, #3d2015 60%, #4a2a1a 100%);
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--space-20) var(--space-6);
+  position: relative;
+  z-index: 5;
+}
+
+.colony-skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.mars-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(180deg, #4a2a1a, #3d1a0a);
+}
+
+.dome {
+  position: absolute;
+  bottom: 50px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, rgba(200,220,255,0.08), rgba(150,180,220,0.04));
+  border: 1px solid rgba(200,220,255,0.1);
+  border-bottom: none;
+}
+
+.dome-1 { left: 15%; width: 180px; height: 90px; }
+.dome-2 { left: 40%; width: 250px; height: 130px; }
+.dome-3 { right: 20%; width: 160px; height: 80px; }
+
+.dome-light {
+  position: absolute;
+  bottom: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-primary-glow);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.colony-content {
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+}
+
+.colony-content h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+}
+
+.colony-content h2 span {
+  color: var(--color-accent);
+}
+
+.colony-content p {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-8);
+}
+
+.colony-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.colony-stat {
+  text-align: center;
+}
+
+.colony-stat .num {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.colony-stat .lbl {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: var(--space-1);
+}
+
+.colony-cta {
+  margin-top: var(--space-10);
+  z-index: 2;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .prep-checklist { grid-template-columns: 1fr; }
+  .colony-stats-row { gap: var(--space-6); }
+  .earth-city-skyline { height: 80px; }
+}

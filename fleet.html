@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Mars Exodus spacecraft tiers — Economy, Business, and Elite. Compare features, safety, and pricing.">
+  <title>Fleet & Technology — Mars Exodus</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/fleet.css">
+</head>
+<body>
+  <div class="stars-bg" aria-hidden="true"></div>
+  <div id="nav-slot"></div>
+
+  <!-- Hero -->
+  <section class="fleet-hero">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Our Fleet</span>
+        <h1>Choose Your <span>Vessel</span></h1>
+        <p class="section-subtitle">Three distinct travel tiers, each engineered for a different kind of Mars experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fleet Cards -->
+  <section class="fleet-section">
+    <div class="container">
+      <div class="fleet-cards reveal stagger" id="fleet-cards">
+
+        <!-- Economy -->
+        <div class="fleet-card" data-tier="economy">
+          <div class="fleet-card-visual economy-bg">
+            <span class="fleet-card-tier tier-economy">Economy</span>
+            <div class="ship-silhouette">
+              <div class="ship-engine"></div>
+              <div class="ship-body"></div>
+              <div class="ship-wing-top"></div>
+              <div class="ship-wing-bottom"></div>
+              <div class="ship-cockpit"></div>
+            </div>
+          </div>
+          <div class="fleet-card-body">
+            <h3>Pathfinder</h3>
+            <div class="fleet-card-subtitle">Essential Mars transit for pioneers</div>
+            <div class="fleet-card-price">
+              <span class="from">Starting from</span>
+              $250,000
+            </div>
+            <ul class="fleet-card-features">
+              <li><span class="feat-icon">✓</span> Shared cabin (4 passengers)</li>
+              <li><span class="feat-icon">✓</span> Standard life support</li>
+              <li><span class="feat-icon">✓</span> Communal dining</li>
+              <li><span class="feat-icon">✓</span> Basic entertainment access</li>
+              <li><span class="feat-icon">✓</span> Standard radiation shielding</li>
+            </ul>
+            <div class="fleet-card-actions">
+              <a href="booking.html?tier=economy" class="btn btn-primary btn-sm">Select</a>
+              <button class="btn btn-outline btn-sm fleet-detail-btn" data-tier="economy">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business -->
+        <div class="fleet-card" data-tier="business">
+          <div class="fleet-card-visual business-bg">
+            <span class="fleet-card-tier tier-business">Business</span>
+            <div class="ship-silhouette">
+              <div class="ship-engine"></div>
+              <div class="ship-body"></div>
+              <div class="ship-wing-top"></div>
+              <div class="ship-wing-bottom"></div>
+              <div class="ship-cockpit"></div>
+            </div>
+          </div>
+          <div class="fleet-card-body">
+            <h3>Voyager</h3>
+            <div class="fleet-card-subtitle">Enhanced comfort for the discerning traveler</div>
+            <div class="fleet-card-price">
+              <span class="from">Starting from</span>
+              $750,000
+            </div>
+            <ul class="fleet-card-features">
+              <li><span class="feat-icon">✓</span> Private twin cabin</li>
+              <li><span class="feat-icon">✓</span> Enhanced life support</li>
+              <li><span class="feat-icon">✓</span> Priority dining + chef menu</li>
+              <li><span class="feat-icon">✓</span> Full entertainment + VR suite</li>
+              <li><span class="feat-icon">✓</span> Advanced radiation shielding</li>
+              <li><span class="feat-icon">✓</span> Observation deck access</li>
+            </ul>
+            <div class="fleet-card-actions">
+              <a href="booking.html?tier=business" class="btn btn-primary btn-sm">Select</a>
+              <button class="btn btn-outline btn-sm fleet-detail-btn" data-tier="business">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elite -->
+        <div class="fleet-card" data-tier="elite">
+          <div class="fleet-card-visual elite-bg">
+            <span class="fleet-card-tier tier-elite">Elite</span>
+            <div class="ship-silhouette">
+              <div class="ship-engine"></div>
+              <div class="ship-body"></div>
+              <div class="ship-wing-top"></div>
+              <div class="ship-wing-bottom"></div>
+              <div class="ship-cockpit"></div>
+            </div>
+          </div>
+          <div class="fleet-card-body">
+            <h3>Sovereign</h3>
+            <div class="fleet-card-subtitle">The ultimate luxury space experience</div>
+            <div class="fleet-card-price">
+              <span class="from">Starting from</span>
+              $2,500,000
+            </div>
+            <ul class="fleet-card-features">
+              <li><span class="feat-icon">✓</span> Private suite with viewport</li>
+              <li><span class="feat-icon">✓</span> Premium life support + AI assistant</li>
+              <li><span class="feat-icon">✓</span> Private chef + custom menu</li>
+              <li><span class="feat-icon">✓</span> Zero-G lounge exclusive access</li>
+              <li><span class="feat-icon">✓</span> Military-grade shielding</li>
+              <li><span class="feat-icon">✓</span> Research lab access</li>
+              <li><span class="feat-icon">✓</span> Priority colony placement</li>
+            </ul>
+            <div class="fleet-card-actions">
+              <a href="booking.html?tier=elite" class="btn btn-accent btn-sm">Select</a>
+              <button class="btn btn-outline btn-sm fleet-detail-btn" data-tier="elite">Details</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="comparison-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Compare</span>
+        <h2 class="section-title">Tier Comparison</h2>
+      </div>
+      <div class="comparison-table-wrapper reveal">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Economy</th>
+              <th>Business</th>
+              <th>Elite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cabin Type</td><td>Shared (4)</td><td>Private Twin</td><td>Private Suite</td></tr>
+            <tr><td>Viewport</td><td class="check-no">✕</td><td class="check-yes">✓</td><td class="check-yes">✓ Panoramic</td></tr>
+            <tr><td>Dining</td><td>Communal</td><td>Priority + Menu</td><td>Private Chef</td></tr>
+            <tr><td>Entertainment</td><td>Basic</td><td>Full + VR</td><td>Full + Zero-G Lounge</td></tr>
+            <tr><td>Radiation Shield</td><td>Standard</td><td>Advanced</td><td>Military Grade</td></tr>
+            <tr><td>Observation Deck</td><td class="check-no">✕</td><td class="check-yes">✓</td><td class="check-yes">✓ Priority</td></tr>
+            <tr><td>Research Lab</td><td class="check-no">✕</td><td class="check-no">✕</td><td class="check-yes">✓</td></tr>
+            <tr><td>AI Assistant</td><td class="check-no">✕</td><td class="check-no">✕</td><td class="check-yes">✓ Personal</td></tr>
+            <tr><td>Colony Priority</td><td>Standard Queue</td><td>Priority Queue</td><td>Immediate</td></tr>
+            <tr><td>Cargo Allowance</td><td>50 kg</td><td>200 kg</td><td>500 kg</td></tr>
+            <tr><td>Price</td><td>$250,000</td><td>$750,000</td><td>$2,500,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Engineering</span>
+        <h2 class="section-title">Technology Stack</h2>
+        <p class="section-subtitle">Every system engineered for reliability, safety, and passenger comfort.</p>
+      </div>
+      <div class="tech-grid reveal stagger">
+        <div class="tech-card">
+          <div class="tech-card-icon">⚡</div>
+          <div>
+            <h4>Plasma Ion Propulsion</h4>
+            <p>4th-generation plasma ion drives delivering 12,000 kN of thrust with 95% fuel efficiency. Cuts transit time to 137 days.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">🛡️</div>
+          <div>
+            <h4>Magnetic Radiation Shield</h4>
+            <p>Active magnetic field deflection system replicating Earth's magnetosphere, blocking 99.7% of cosmic radiation.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">🌡️</div>
+          <div>
+            <h4>Thermal Management</h4>
+            <p>Adaptive heat distribution with phase-change radiators maintaining cabin temperature at 22°C ± 0.5°C.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">💨</div>
+          <div>
+            <h4>Life Support System</h4>
+            <p>Closed-loop ECLSS with bioregenerative oxygen production and CO₂ scrubbing. 200% redundancy on all critical systems.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">🤖</div>
+          <div>
+            <h4>ARIA AI System</h4>
+            <p>Ship-wide artificial intelligence managing navigation, systems monitoring, passenger services, and emergency protocols.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">🔄</div>
+          <div>
+            <h4>Centrifugal Gravity Ring</h4>
+            <p>Rotating habitat ring providing 0.38G — matching Mars surface gravity — to prepare passengers for colony life.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-slot"></div>
+
+  <script src="js/global.js"></script>
+  <script src="js/fleet.js"></script>
+</body>
+</html>
