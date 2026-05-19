@@ -1,3 +1,9 @@
+# Mars Exodus
+
+Live Demo:
+mars-exodus-deployment.vercel.app
+
+
 # 🚀 Mars Exodus — Humanity's Next Frontier
 
 Welcome to **Mars Exodus**, a premium, cinematic web-based experience designed to showcase the future of interplanetary travel. This project provides a comprehensive and immersive platform for users to explore Mars missions, choose their spacecraft, and experience a fully simulated journey from Earth to our growing Martian colonies. It features robust user authentication, a dynamic multi-step booking wizard, and interactive 3D elements that push the boundaries of modern web design.
